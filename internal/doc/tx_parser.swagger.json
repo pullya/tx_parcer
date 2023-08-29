@@ -1,0 +1,210 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Tx-Parser API",
+        "description": "<b>Description of Parser-interface API-methods.</b>",
+        "version": "1.0.0"
+    },
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+        "/v1/txParser/getCurrentBlock": {
+            "get": {
+                "summary": "Get last parsed block",
+                "operationId": "txParser_getCurrentBlock",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "blockNumber": {
+                                    "type": "string",
+                                    "format": "string"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unsuccessful response",
+                        "schema": {
+                            "$ref": "#/definitions/errorResponse"
+                        }
+                    }
+                },
+                "tags": [
+                    "Parser interface"
+                ]
+            }
+        },
+        "/v1/tx-parser/subscribe": {
+            "post": {
+                "summary": "Add address to observer",
+                "operationId": "txParser_subscribe",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "string",
+                                    "format": "boolean"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unsuccessful response",
+                        "schema": {
+                            "$ref": "#/definitions/errorResponse"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "format": "string",
+                        "description": "20 Bytes - Contract address"
+                    }
+                ],
+                "tags": [
+                    "Parser interface"
+                ]
+            }
+        },
+        "/v1/tx-parser/getTransactions": {
+            "get": {
+                "summary": "List of inbound or outbound transactions for an address",
+                "operationId": "txParser_getTransactions",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "transactions": {
+                                    "description": "Transactions list",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "blockHash": {
+                                                "description": "32 Bytes - hash of the block where this transaction was in. null when its pending.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "blockNumber": {
+                                                "description": "block number where this transaction was in. null when its pending.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "from": {
+                                                "description": "20 Bytes - address of the sender.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "gas": {
+                                                "description": "gas provided by the sender.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "gasPrice": {
+                                                "description": "gas price provided by the sender in Wei.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "hash": {
+                                                "description": "32 Bytes - hash of the transaction.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "input": {
+                                                "description": "the data send along with the transaction.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "nonce": {
+                                                "description": "the number of transactions made by the sender prior to this one.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "to": {
+                                                "description": "20 Bytes - address of the receiver. null when its a contract creation transaction.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "transactionIndex": {
+                                                "description": "integer of the transactions index position in the block. null when its pending.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "value": {
+                                                "description": "value transferred in Wei.",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "v": {
+                                                "description": "ECDSA recovery id",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "r": {
+                                                "description": "ECDSA signature r",
+                                                "type": "string",
+                                                "format": "string"
+                                            },
+                                            "s": {
+                                                "description": "ECDSA signature s",
+                                                "type": "string",
+                                                "format": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unsuccessful response",
+                        "schema": {
+                            "$ref": "#/definitions/errorResponse"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "type": "string",
+                        "required": true,
+                        "format": "string",
+                        "description": "20 Bytes - Contract address"
+                    }
+                ],
+                "tags": [
+                    "Parser interface"
+                ]
+            }
+        }        
+    },
+    "definitions": {
+        "errorResponse": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "format": "boolean"
+                },
+                "error": {
+                    "type": "string",
+                    "format": "string"
+                }
+            }
+        }
+    }
+}
