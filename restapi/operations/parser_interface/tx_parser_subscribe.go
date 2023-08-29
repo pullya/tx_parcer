@@ -58,27 +58,27 @@ func (o *TxParserSubscribe) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 
 }
 
-// TxParserSubscribeOKBody tx parser subscribe o k body
+// TxParserSubscribeDefaultBody tx parser subscribe default body
 //
-// swagger:model TxParserSubscribeOKBody
-type TxParserSubscribeOKBody struct {
+// swagger:model TxParserSubscribeDefaultBody
+type TxParserSubscribeDefaultBody struct {
 
 	// success
 	Success bool `json:"success,omitempty"`
 }
 
-// Validate validates this tx parser subscribe o k body
-func (o *TxParserSubscribeOKBody) Validate(formats strfmt.Registry) error {
+// Validate validates this tx parser subscribe default body
+func (o *TxParserSubscribeDefaultBody) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this tx parser subscribe o k body based on context it is used
-func (o *TxParserSubscribeOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this tx parser subscribe default body based on context it is used
+func (o *TxParserSubscribeDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (o *TxParserSubscribeOKBody) MarshalBinary() ([]byte, error) {
+func (o *TxParserSubscribeDefaultBody) MarshalBinary() ([]byte, error) {
 	if o == nil {
 		return nil, nil
 	}
@@ -86,8 +86,8 @@ func (o *TxParserSubscribeOKBody) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (o *TxParserSubscribeOKBody) UnmarshalBinary(b []byte) error {
-	var res TxParserSubscribeOKBody
+func (o *TxParserSubscribeDefaultBody) UnmarshalBinary(b []byte) error {
+	var res TxParserSubscribeDefaultBody
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

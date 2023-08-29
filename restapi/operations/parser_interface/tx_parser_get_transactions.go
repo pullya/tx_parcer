@@ -60,17 +60,17 @@ func (o *TxParserGetTransactions) ServeHTTP(rw http.ResponseWriter, r *http.Requ
 
 }
 
-// TxParserGetTransactionsOKBody tx parser get transactions o k body
+// TxParserGetTransactionsDefaultBody tx parser get transactions default body
 //
-// swagger:model TxParserGetTransactionsOKBody
-type TxParserGetTransactionsOKBody struct {
+// swagger:model TxParserGetTransactionsDefaultBody
+type TxParserGetTransactionsDefaultBody struct {
 
 	// Transactions list
-	Transactions []*TxParserGetTransactionsOKBodyTransactionsItems0 `json:"transactions"`
+	Transactions []*TxParserGetTransactionsDefaultBodyTransactionsItems0 `json:"transactions"`
 }
 
-// Validate validates this tx parser get transactions o k body
-func (o *TxParserGetTransactionsOKBody) Validate(formats strfmt.Registry) error {
+// Validate validates this tx parser get transactions default body
+func (o *TxParserGetTransactionsDefaultBody) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := o.validateTransactions(formats); err != nil {
@@ -83,7 +83,7 @@ func (o *TxParserGetTransactionsOKBody) Validate(formats strfmt.Registry) error 
 	return nil
 }
 
-func (o *TxParserGetTransactionsOKBody) validateTransactions(formats strfmt.Registry) error {
+func (o *TxParserGetTransactionsDefaultBody) validateTransactions(formats strfmt.Registry) error {
 	if swag.IsZero(o.Transactions) { // not required
 		return nil
 	}
@@ -96,9 +96,9 @@ func (o *TxParserGetTransactionsOKBody) validateTransactions(formats strfmt.Regi
 		if o.Transactions[i] != nil {
 			if err := o.Transactions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("txParserGetTransactionsOK" + "." + "transactions" + "." + strconv.Itoa(i))
+					return ve.ValidateName("txParser_getTransactions default" + "." + "transactions" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("txParserGetTransactionsOK" + "." + "transactions" + "." + strconv.Itoa(i))
+					return ce.ValidateName("txParser_getTransactions default" + "." + "transactions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -109,8 +109,8 @@ func (o *TxParserGetTransactionsOKBody) validateTransactions(formats strfmt.Regi
 	return nil
 }
 
-// ContextValidate validate this tx parser get transactions o k body based on the context it is used
-func (o *TxParserGetTransactionsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this tx parser get transactions default body based on the context it is used
+func (o *TxParserGetTransactionsDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := o.contextValidateTransactions(ctx, formats); err != nil {
@@ -123,7 +123,7 @@ func (o *TxParserGetTransactionsOKBody) ContextValidate(ctx context.Context, for
 	return nil
 }
 
-func (o *TxParserGetTransactionsOKBody) contextValidateTransactions(ctx context.Context, formats strfmt.Registry) error {
+func (o *TxParserGetTransactionsDefaultBody) contextValidateTransactions(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(o.Transactions); i++ {
 
@@ -135,9 +135,9 @@ func (o *TxParserGetTransactionsOKBody) contextValidateTransactions(ctx context.
 
 			if err := o.Transactions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("txParserGetTransactionsOK" + "." + "transactions" + "." + strconv.Itoa(i))
+					return ve.ValidateName("txParser_getTransactions default" + "." + "transactions" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("txParserGetTransactionsOK" + "." + "transactions" + "." + strconv.Itoa(i))
+					return ce.ValidateName("txParser_getTransactions default" + "." + "transactions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -149,7 +149,7 @@ func (o *TxParserGetTransactionsOKBody) contextValidateTransactions(ctx context.
 }
 
 // MarshalBinary interface implementation
-func (o *TxParserGetTransactionsOKBody) MarshalBinary() ([]byte, error) {
+func (o *TxParserGetTransactionsDefaultBody) MarshalBinary() ([]byte, error) {
 	if o == nil {
 		return nil, nil
 	}
@@ -157,8 +157,8 @@ func (o *TxParserGetTransactionsOKBody) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (o *TxParserGetTransactionsOKBody) UnmarshalBinary(b []byte) error {
-	var res TxParserGetTransactionsOKBody
+func (o *TxParserGetTransactionsDefaultBody) UnmarshalBinary(b []byte) error {
+	var res TxParserGetTransactionsDefaultBody
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
@@ -166,10 +166,10 @@ func (o *TxParserGetTransactionsOKBody) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// TxParserGetTransactionsOKBodyTransactionsItems0 tx parser get transactions o k body transactions items0
+// TxParserGetTransactionsDefaultBodyTransactionsItems0 tx parser get transactions default body transactions items0
 //
-// swagger:model TxParserGetTransactionsOKBodyTransactionsItems0
-type TxParserGetTransactionsOKBodyTransactionsItems0 struct {
+// swagger:model TxParserGetTransactionsDefaultBodyTransactionsItems0
+type TxParserGetTransactionsDefaultBodyTransactionsItems0 struct {
 
 	// 32 Bytes - hash of the block where this transaction was in. null when its pending.
 	BlockHash string `json:"blockHash,omitempty"`
@@ -214,18 +214,18 @@ type TxParserGetTransactionsOKBodyTransactionsItems0 struct {
 	Value string `json:"value,omitempty"`
 }
 
-// Validate validates this tx parser get transactions o k body transactions items0
-func (o *TxParserGetTransactionsOKBodyTransactionsItems0) Validate(formats strfmt.Registry) error {
+// Validate validates this tx parser get transactions default body transactions items0
+func (o *TxParserGetTransactionsDefaultBodyTransactionsItems0) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this tx parser get transactions o k body transactions items0 based on context it is used
-func (o *TxParserGetTransactionsOKBodyTransactionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this tx parser get transactions default body transactions items0 based on context it is used
+func (o *TxParserGetTransactionsDefaultBodyTransactionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (o *TxParserGetTransactionsOKBodyTransactionsItems0) MarshalBinary() ([]byte, error) {
+func (o *TxParserGetTransactionsDefaultBodyTransactionsItems0) MarshalBinary() ([]byte, error) {
 	if o == nil {
 		return nil, nil
 	}
@@ -233,8 +233,8 @@ func (o *TxParserGetTransactionsOKBodyTransactionsItems0) MarshalBinary() ([]byt
 }
 
 // UnmarshalBinary interface implementation
-func (o *TxParserGetTransactionsOKBodyTransactionsItems0) UnmarshalBinary(b []byte) error {
-	var res TxParserGetTransactionsOKBodyTransactionsItems0
+func (o *TxParserGetTransactionsDefaultBodyTransactionsItems0) UnmarshalBinary(b []byte) error {
+	var res TxParserGetTransactionsDefaultBodyTransactionsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

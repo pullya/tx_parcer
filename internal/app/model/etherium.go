@@ -69,8 +69,8 @@ func Hex2Int(inHex string) int {
 	return int(result)
 }
 
-func (rt *EthTransaction) AsResponse() *parser_interface.TxParserGetTransactionsOKBodyTransactionsItems0 {
-	return &parser_interface.TxParserGetTransactionsOKBodyTransactionsItems0{
+func (rt *EthTransaction) AsResponse() *parser_interface.TxParserGetTransactionsDefaultBodyTransactionsItems0 {
+	return &parser_interface.TxParserGetTransactionsDefaultBodyTransactionsItems0{
 		BlockHash:        rt.BlockHash,
 		BlockNumber:      rt.BlockNumber,
 		From:             rt.From,

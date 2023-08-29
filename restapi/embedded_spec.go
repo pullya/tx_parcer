@@ -46,8 +46,8 @@ func init() {
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "default": {
+            "description": "Method response",
             "schema": {
               "type": "object",
               "properties": {
@@ -132,12 +132,6 @@ func init() {
                 }
               }
             }
-          },
-          "default": {
-            "description": "Unsuccessful response",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
-            }
           }
         }
       }
@@ -160,22 +154,16 @@ func init() {
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "default": {
+            "description": "Method response",
             "schema": {
               "type": "object",
               "properties": {
                 "success": {
-                  "type": "string",
+                  "type": "boolean",
                   "format": "boolean"
                 }
               }
-            }
-          },
-          "default": {
-            "description": "Unsuccessful response",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -189,39 +177,18 @@ func init() {
         "summary": "Get last parsed block",
         "operationId": "txParser_getCurrentBlock",
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "default": {
+            "description": "Method response",
             "schema": {
               "type": "object",
               "properties": {
                 "blockNumber": {
-                  "type": "string",
-                  "format": "string"
+                  "type": "integer",
+                  "format": "int32"
                 }
               }
             }
-          },
-          "default": {
-            "description": "Unsuccessful response",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
-            }
           }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "errorResponse": {
-      "type": "object",
-      "properties": {
-        "error": {
-          "type": "string",
-          "format": "string"
-        },
-        "success": {
-          "type": "string",
-          "format": "boolean"
         }
       }
     }
@@ -256,8 +223,8 @@ func init() {
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "default": {
+            "description": "Method response",
             "schema": {
               "type": "object",
               "properties": {
@@ -269,12 +236,6 @@ func init() {
                   }
                 }
               }
-            }
-          },
-          "default": {
-            "description": "Unsuccessful response",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -298,22 +259,16 @@ func init() {
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "default": {
+            "description": "Method response",
             "schema": {
               "type": "object",
               "properties": {
                 "success": {
-                  "type": "string",
+                  "type": "boolean",
                   "format": "boolean"
                 }
               }
-            }
-          },
-          "default": {
-            "description": "Unsuccessful response",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -327,22 +282,16 @@ func init() {
         "summary": "Get last parsed block",
         "operationId": "txParser_getCurrentBlock",
         "responses": {
-          "200": {
-            "description": "Successful response",
+          "default": {
+            "description": "Method response",
             "schema": {
               "type": "object",
               "properties": {
                 "blockNumber": {
-                  "type": "string",
-                  "format": "string"
+                  "type": "integer",
+                  "format": "int32"
                 }
               }
-            }
-          },
-          "default": {
-            "description": "Unsuccessful response",
-            "schema": {
-              "$ref": "#/definitions/errorResponse"
             }
           }
         }
@@ -422,19 +371,6 @@ func init() {
           "description": "value transferred in Wei.",
           "type": "string",
           "format": "string"
-        }
-      }
-    },
-    "errorResponse": {
-      "type": "object",
-      "properties": {
-        "error": {
-          "type": "string",
-          "format": "string"
-        },
-        "success": {
-          "type": "string",
-          "format": "boolean"
         }
       }
     }

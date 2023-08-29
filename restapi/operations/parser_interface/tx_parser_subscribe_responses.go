@@ -9,57 +9,10 @@ import (
 	"net/http"
 
 	"github.com/go-openapi/runtime"
-
-	"github.com/pullya/tx_parcer/models"
 )
 
-// TxParserSubscribeOKCode is the HTTP code returned for type TxParserSubscribeOK
-const TxParserSubscribeOKCode int = 200
-
 /*
-TxParserSubscribeOK Successful response
-
-swagger:response txParserSubscribeOK
-*/
-type TxParserSubscribeOK struct {
-
-	/*
-	  In: Body
-	*/
-	Payload *TxParserSubscribeOKBody `json:"body,omitempty"`
-}
-
-// NewTxParserSubscribeOK creates TxParserSubscribeOK with default headers values
-func NewTxParserSubscribeOK() *TxParserSubscribeOK {
-
-	return &TxParserSubscribeOK{}
-}
-
-// WithPayload adds the payload to the tx parser subscribe o k response
-func (o *TxParserSubscribeOK) WithPayload(payload *TxParserSubscribeOKBody) *TxParserSubscribeOK {
-	o.Payload = payload
-	return o
-}
-
-// SetPayload sets the payload to the tx parser subscribe o k response
-func (o *TxParserSubscribeOK) SetPayload(payload *TxParserSubscribeOKBody) {
-	o.Payload = payload
-}
-
-// WriteResponse to the client
-func (o *TxParserSubscribeOK) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
-
-	rw.WriteHeader(200)
-	if o.Payload != nil {
-		payload := o.Payload
-		if err := producer.Produce(rw, payload); err != nil {
-			panic(err) // let the recovery middleware deal with this
-		}
-	}
-}
-
-/*
-TxParserSubscribeDefault Unsuccessful response
+TxParserSubscribeDefault Method response
 
 swagger:response txParserSubscribeDefault
 */
@@ -69,7 +22,7 @@ type TxParserSubscribeDefault struct {
 	/*
 	  In: Body
 	*/
-	Payload *models.ErrorResponse `json:"body,omitempty"`
+	Payload *TxParserSubscribeDefaultBody `json:"body,omitempty"`
 }
 
 // NewTxParserSubscribeDefault creates TxParserSubscribeDefault with default headers values
@@ -95,13 +48,13 @@ func (o *TxParserSubscribeDefault) SetStatusCode(code int) {
 }
 
 // WithPayload adds the payload to the tx parser subscribe default response
-func (o *TxParserSubscribeDefault) WithPayload(payload *models.ErrorResponse) *TxParserSubscribeDefault {
+func (o *TxParserSubscribeDefault) WithPayload(payload *TxParserSubscribeDefaultBody) *TxParserSubscribeDefault {
 	o.Payload = payload
 	return o
 }
 
 // SetPayload sets the payload to the tx parser subscribe default response
-func (o *TxParserSubscribeDefault) SetPayload(payload *models.ErrorResponse) {
+func (o *TxParserSubscribeDefault) SetPayload(payload *TxParserSubscribeDefaultBody) {
 	o.Payload = payload
 }
 

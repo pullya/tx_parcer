@@ -9,57 +9,10 @@ import (
 	"net/http"
 
 	"github.com/go-openapi/runtime"
-
-	"github.com/pullya/tx_parcer/models"
 )
 
-// TxParserGetTransactionsOKCode is the HTTP code returned for type TxParserGetTransactionsOK
-const TxParserGetTransactionsOKCode int = 200
-
 /*
-TxParserGetTransactionsOK Successful response
-
-swagger:response txParserGetTransactionsOK
-*/
-type TxParserGetTransactionsOK struct {
-
-	/*
-	  In: Body
-	*/
-	Payload *TxParserGetTransactionsOKBody `json:"body,omitempty"`
-}
-
-// NewTxParserGetTransactionsOK creates TxParserGetTransactionsOK with default headers values
-func NewTxParserGetTransactionsOK() *TxParserGetTransactionsOK {
-
-	return &TxParserGetTransactionsOK{}
-}
-
-// WithPayload adds the payload to the tx parser get transactions o k response
-func (o *TxParserGetTransactionsOK) WithPayload(payload *TxParserGetTransactionsOKBody) *TxParserGetTransactionsOK {
-	o.Payload = payload
-	return o
-}
-
-// SetPayload sets the payload to the tx parser get transactions o k response
-func (o *TxParserGetTransactionsOK) SetPayload(payload *TxParserGetTransactionsOKBody) {
-	o.Payload = payload
-}
-
-// WriteResponse to the client
-func (o *TxParserGetTransactionsOK) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
-
-	rw.WriteHeader(200)
-	if o.Payload != nil {
-		payload := o.Payload
-		if err := producer.Produce(rw, payload); err != nil {
-			panic(err) // let the recovery middleware deal with this
-		}
-	}
-}
-
-/*
-TxParserGetTransactionsDefault Unsuccessful response
+TxParserGetTransactionsDefault Method response
 
 swagger:response txParserGetTransactionsDefault
 */
@@ -69,7 +22,7 @@ type TxParserGetTransactionsDefault struct {
 	/*
 	  In: Body
 	*/
-	Payload *models.ErrorResponse `json:"body,omitempty"`
+	Payload *TxParserGetTransactionsDefaultBody `json:"body,omitempty"`
 }
 
 // NewTxParserGetTransactionsDefault creates TxParserGetTransactionsDefault with default headers values
@@ -95,13 +48,13 @@ func (o *TxParserGetTransactionsDefault) SetStatusCode(code int) {
 }
 
 // WithPayload adds the payload to the tx parser get transactions default response
-func (o *TxParserGetTransactionsDefault) WithPayload(payload *models.ErrorResponse) *TxParserGetTransactionsDefault {
+func (o *TxParserGetTransactionsDefault) WithPayload(payload *TxParserGetTransactionsDefaultBody) *TxParserGetTransactionsDefault {
 	o.Payload = payload
 	return o
 }
 
 // SetPayload sets the payload to the tx parser get transactions default response
-func (o *TxParserGetTransactionsDefault) SetPayload(payload *models.ErrorResponse) {
+func (o *TxParserGetTransactionsDefault) SetPayload(payload *TxParserGetTransactionsDefaultBody) {
 	o.Payload = payload
 }
 

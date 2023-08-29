@@ -58,27 +58,27 @@ func (o *TxParserGetCurrentBlock) ServeHTTP(rw http.ResponseWriter, r *http.Requ
 
 }
 
-// TxParserGetCurrentBlockOKBody tx parser get current block o k body
+// TxParserGetCurrentBlockDefaultBody tx parser get current block default body
 //
-// swagger:model TxParserGetCurrentBlockOKBody
-type TxParserGetCurrentBlockOKBody struct {
+// swagger:model TxParserGetCurrentBlockDefaultBody
+type TxParserGetCurrentBlockDefaultBody struct {
 
 	// block number
-	BlockNumber string `json:"blockNumber,omitempty"`
+	BlockNumber int32 `json:"blockNumber,omitempty"`
 }
 
-// Validate validates this tx parser get current block o k body
-func (o *TxParserGetCurrentBlockOKBody) Validate(formats strfmt.Registry) error {
+// Validate validates this tx parser get current block default body
+func (o *TxParserGetCurrentBlockDefaultBody) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this tx parser get current block o k body based on context it is used
-func (o *TxParserGetCurrentBlockOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this tx parser get current block default body based on context it is used
+func (o *TxParserGetCurrentBlockDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (o *TxParserGetCurrentBlockOKBody) MarshalBinary() ([]byte, error) {
+func (o *TxParserGetCurrentBlockDefaultBody) MarshalBinary() ([]byte, error) {
 	if o == nil {
 		return nil, nil
 	}
@@ -86,8 +86,8 @@ func (o *TxParserGetCurrentBlockOKBody) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (o *TxParserGetCurrentBlockOKBody) UnmarshalBinary(b []byte) error {
-	var res TxParserGetCurrentBlockOKBody
+func (o *TxParserGetCurrentBlockDefaultBody) UnmarshalBinary(b []byte) error {
+	var res TxParserGetCurrentBlockDefaultBody
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

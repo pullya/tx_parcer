@@ -5,7 +5,6 @@ package restapi
 import (
 	"crypto/tls"
 	"net/http"
-	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
@@ -57,21 +56,21 @@ func configureAPI(api *operations.TxParserAPI) http.Handler {
 
 	api.ParserInterfaceTxParserGetCurrentBlockHandler = parser_interface.TxParserGetCurrentBlockHandlerFunc(func(params parser_interface.TxParserGetCurrentBlockParams) middleware.Responder {
 		blockNumber := tp.TxParserService.GetCurrentBlock()
-		return parser_interface.NewTxParserGetCurrentBlockOK().WithPayload(&parser_interface.TxParserGetCurrentBlockOKBody{BlockNumber: strconv.Itoa(blockNumber)})
+		return parser_interface.NewTxParserGetCurrentBlockDefault(200).WithPayload(&parser_interface.TxParserGetCurrentBlockDefaultBody{BlockNumber: int32(blockNumber)})
 	})
 
 	api.ParserInterfaceTxParserGetTransactionsHandler = parser_interface.TxParserGetTransactionsHandlerFunc(func(params parser_interface.TxParserGetTransactionsParams) middleware.Responder {
 		trans := tp.TxParserService.GetTransactions(params.Address)
-		response := make([]*parser_interface.TxParserGetTransactionsOKBodyTransactionsItems0, 0, len(trans))
+		response := make([]*parser_interface.TxParserGetTransactionsDefaultBodyTransactionsItems0, 0, len(trans))
 		for _, tran := range trans {
 			response = append(response, tran.AsResponse())
 		}
-		return parser_interface.NewTxParserGetTransactionsOK().WithPayload(&parser_interface.TxParserGetTransactionsOKBody{Transactions: response})
+		return parser_interface.NewTxParserGetTransactionsDefault(200).WithPayload(&parser_interface.TxParserGetTransactionsDefaultBody{Transactions: response})
 	})
 
 	api.ParserInterfaceTxParserSubscribeHandler = parser_interface.TxParserSubscribeHandlerFunc(func(params parser_interface.TxParserSubscribeParams) middleware.Responder {
 		result := tp.TxParserService.Subscribe(params.Address)
-		return parser_interface.NewTxParserSubscribeOK().WithPayload(&parser_interface.TxParserSubscribeOKBody{Success: result})
+		return parser_interface.NewTxParserSubscribeDefault(200).WithPayload(&parser_interface.TxParserSubscribeDefaultBody{Success: result})
 
 	})
 

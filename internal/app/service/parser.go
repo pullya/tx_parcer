@@ -67,6 +67,12 @@ func (tps TxParserService) GetCurrentBlock() int {
 func (tps *TxParserService) Subscribe(address string) bool {
 
 	fmt.Println("received request, address =", address)
+
+	if id, ok := tps.TxParseRepository.GetSubsctiptionByAddress(address); ok == nil {
+		fmt.Println("Subscribe: address already subscribed, id =", id)
+		return true
+	}
+
 	id, err := tps.TxParseRepository.AddSubscription(address)
 	if err != nil {
 		fmt.Println("Subscribe: failed to save subscription info", err)

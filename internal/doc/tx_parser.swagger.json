@@ -14,22 +14,16 @@
                 "summary": "Get last parsed block",
                 "operationId": "txParser_getCurrentBlock",
                 "responses": {
-                    "200": {
-                        "description": "Successful response",
+                    "default": {
+                        "description": "Method response",
                         "schema": {
                             "type": "object",
                             "properties": {
                                 "blockNumber": {
-                                    "type": "string",
-                                    "format": "string"
+                                    "type": "integer",
+                                    "format": "int32"
                                 }
                             }
-                        }
-                    },
-                    "default": {
-                        "description": "Unsuccessful response",
-                        "schema": {
-                            "$ref": "#/definitions/errorResponse"
                         }
                     }
                 },
@@ -43,22 +37,16 @@
                 "summary": "Add address to observer",
                 "operationId": "txParser_subscribe",
                 "responses": {
-                    "200": {
-                        "description": "Successful response",
+                    "default": {
+                        "description": "Method response",
                         "schema": {
                             "type": "object",
                             "properties": {
                                 "success": {
-                                    "type": "string",
+                                    "type": "boolean",
                                     "format": "boolean"
                                 }
                             }
-                        }
-                    },
-                    "default": {
-                        "description": "Unsuccessful response",
-                        "schema": {
-                            "$ref": "#/definitions/errorResponse"
                         }
                     }
                 },
@@ -82,8 +70,8 @@
                 "summary": "List of inbound or outbound transactions for an address",
                 "operationId": "txParser_getTransactions",
                 "responses": {
-                    "200": {
-                        "description": "Successful response",
+                    "default": {
+                        "description": "Method response",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -168,12 +156,6 @@
                                 }
                             }
                         }
-                    },
-                    "default": {
-                        "description": "Unsuccessful response",
-                        "schema": {
-                            "$ref": "#/definitions/errorResponse"
-                        }
                     }
                 },
                 "parameters": [
@@ -191,20 +173,5 @@
                 ]
             }
         }        
-    },
-    "definitions": {
-        "errorResponse": {
-            "type": "object",
-            "properties": {
-                "success": {
-                    "type": "string",
-                    "format": "boolean"
-                },
-                "error": {
-                    "type": "string",
-                    "format": "string"
-                }
-            }
-        }
     }
 }

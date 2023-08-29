@@ -9,57 +9,10 @@ import (
 	"net/http"
 
 	"github.com/go-openapi/runtime"
-
-	"github.com/pullya/tx_parcer/models"
 )
 
-// TxParserGetCurrentBlockOKCode is the HTTP code returned for type TxParserGetCurrentBlockOK
-const TxParserGetCurrentBlockOKCode int = 200
-
 /*
-TxParserGetCurrentBlockOK Successful response
-
-swagger:response txParserGetCurrentBlockOK
-*/
-type TxParserGetCurrentBlockOK struct {
-
-	/*
-	  In: Body
-	*/
-	Payload *TxParserGetCurrentBlockOKBody `json:"body,omitempty"`
-}
-
-// NewTxParserGetCurrentBlockOK creates TxParserGetCurrentBlockOK with default headers values
-func NewTxParserGetCurrentBlockOK() *TxParserGetCurrentBlockOK {
-
-	return &TxParserGetCurrentBlockOK{}
-}
-
-// WithPayload adds the payload to the tx parser get current block o k response
-func (o *TxParserGetCurrentBlockOK) WithPayload(payload *TxParserGetCurrentBlockOKBody) *TxParserGetCurrentBlockOK {
-	o.Payload = payload
-	return o
-}
-
-// SetPayload sets the payload to the tx parser get current block o k response
-func (o *TxParserGetCurrentBlockOK) SetPayload(payload *TxParserGetCurrentBlockOKBody) {
-	o.Payload = payload
-}
-
-// WriteResponse to the client
-func (o *TxParserGetCurrentBlockOK) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
-
-	rw.WriteHeader(200)
-	if o.Payload != nil {
-		payload := o.Payload
-		if err := producer.Produce(rw, payload); err != nil {
-			panic(err) // let the recovery middleware deal with this
-		}
-	}
-}
-
-/*
-TxParserGetCurrentBlockDefault Unsuccessful response
+TxParserGetCurrentBlockDefault Method response
 
 swagger:response txParserGetCurrentBlockDefault
 */
@@ -69,7 +22,7 @@ type TxParserGetCurrentBlockDefault struct {
 	/*
 	  In: Body
 	*/
-	Payload *models.ErrorResponse `json:"body,omitempty"`
+	Payload *TxParserGetCurrentBlockDefaultBody `json:"body,omitempty"`
 }
 
 // NewTxParserGetCurrentBlockDefault creates TxParserGetCurrentBlockDefault with default headers values
@@ -95,13 +48,13 @@ func (o *TxParserGetCurrentBlockDefault) SetStatusCode(code int) {
 }
 
 // WithPayload adds the payload to the tx parser get current block default response
-func (o *TxParserGetCurrentBlockDefault) WithPayload(payload *models.ErrorResponse) *TxParserGetCurrentBlockDefault {
+func (o *TxParserGetCurrentBlockDefault) WithPayload(payload *TxParserGetCurrentBlockDefaultBody) *TxParserGetCurrentBlockDefault {
 	o.Payload = payload
 	return o
 }
 
 // SetPayload sets the payload to the tx parser get current block default response
-func (o *TxParserGetCurrentBlockDefault) SetPayload(payload *models.ErrorResponse) {
+func (o *TxParserGetCurrentBlockDefault) SetPayload(payload *TxParserGetCurrentBlockDefaultBody) {
 	o.Payload = payload
 }
 
